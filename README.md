@@ -1,5 +1,6 @@
 # GEO-WB6 Summerschool
 “Crop-type Mapping and Area-based Monitoring using Satellite Remote Sensing”
+
 May 11-17, 2025 @ Lake Ohrid (Albania
 
 Welcome to the repository for the **CTM Albania Summer School**. This repository contains all the materials, scripts, and setup instructions needed for the hands-on sessions.
@@ -25,13 +26,11 @@ To get started with the materials, please follow the steps below in **RStudio**.
 
 ### 1. Clone the Repository
 
-Clone the repository to your local machine using RStudio or Git:
+Clone the repository to your local machine using RStudio:
 
 ```bash
-git clone https://github.com/your-username/ctm_albania.git
+git@github.com:geo-masc/ctm_albania.git
 ```
-
-> Replace `your-username` with the actual GitHub username or organization if needed.
 
 ### 2. Install `renv`
 

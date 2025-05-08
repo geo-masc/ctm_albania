@@ -32,6 +32,9 @@ Clone the repository to your local machine using RStudio:
 git@github.com:geo-masc/ctm_albania.git
 ```
 
+Download the data from: https://cloud.thuenen.de/index.php/s/XiQ2yzKzP77XsWR
+Please use the provided password.
+
 ### 2. Install `renv`
 
 If you haven't already, install the **renv** package to manage dependencies:

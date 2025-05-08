@@ -60,6 +60,13 @@ Navigate to and open the main workshop script:
 /ctm_albania/src/R/WS_part_I_R_script.R
 ```
 
+and for the second part:
+
+```
+/ctm_albania/src/R/WS_part_II_R_script.R
+```
+
+
 ---
 
 ## 🧑‍🏫 Workshop Scripts

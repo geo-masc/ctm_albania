@@ -1,5 +1,6 @@
 ++PARAM_LEVEL2_START++
 
+
 # INPUT/OUTPUT DIRECTORIES
 # ------------------------------------------------------------------------
 FILE_QUEUE = /mnt/mowing/albania/level1/images/queue.txt

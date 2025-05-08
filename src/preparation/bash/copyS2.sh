@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Set source and destination base paths
 S3_BASE="/eodata/Sentinel-2/MSI/L1C_N0500"
 DEST_BASE="/mnt/mowing/albania/level1/images/sentinel"

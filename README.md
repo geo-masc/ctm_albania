@@ -34,7 +34,7 @@ git@github.com:geo-masc/ctm_albania.git
 
 Download the necessary data from: https://cloud.thuenen.de/index.php/s/XiQ2yzKzP77XsWR
 
-Please use the provided password.
+Please use the password provided.
 
 ### 2. Install `renv`
 

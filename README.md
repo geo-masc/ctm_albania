@@ -31,6 +31,8 @@ Clone the repository to your local machine using RStudio:
 ```bash
 git@github.com:geo-masc/ctm_albania.git
 ```
+If not yet available please download and install R-Tools from: https://cran.r-project.org/bin/windows/Rtools/
+Please make sure to use the version that matches your R installation.
 
 Download the necessary data from: https://cloud.thuenen.de/index.php/s/XiQ2yzKzP77XsWR
 

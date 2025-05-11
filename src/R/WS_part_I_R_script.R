@@ -34,8 +34,6 @@ ggplot(data = IACS) +
        fill = "CTM Class") +
   theme_minimal()
 
-# Set random seed for reproducibility
-set.seed(143)
 
 # Random sampling per class for model training
 samples_train <- IACS %>%
@@ -45,14 +43,10 @@ samples_train <- IACS %>%
   st_centroid() %>% 
   mutate(dataset = "train") 
   
-# Random sampling per class for model validation
-samples_valid <- IACS %>%
-  drop_na() %>% 
-  filter(!row_number() %in% samples_train$field_id) %>%  
-  group_by(CTMmajority) %>%
-  slice_sample(n = 100) %>%
-  st_centroid() %>% 
-  mutate(dataset = "valid") 
+
+# backup path to file
+# save(valid_vals, file = "valid_samples.RData")
+# load( "backup/valid_samples.RData")
 
 
 # Extract raster values for training
@@ -67,6 +61,29 @@ train_vals <- terra::extract(raster_stack, vect(samples_train), ID = FALSE) %>%
 # load("backup/train_samples.RData") 
 
 
+# Train Random Forest model
+print('Train model.')
+rf_model <- randomForest(x = train_vals[, 1:504], y = as.factor(train_vals[, 505]), 
+                         ntree = 500, mtry = sqrt(504), importance = TRUE)
+
+# Show variable importance
+importance(rf_model)
+varImpPlot(rf_model)
+
+############################ Apply model to unseen data ########################
+
+# backup path to model
+# load("CTM_model.RData")
+
+# Random sampling per class for model validation
+samples_valid <- IACS %>%
+  drop_na() %>% 
+  filter(!row_number() %in% samples_train$field_id) %>%  
+  group_by(CTMmajority) %>%
+  slice_sample(n = 100) %>%
+  st_centroid() %>% 
+  mutate(dataset = "valid") 
+
 # Extract raster values for validation
 # --> this might take a while
 valid_vals <- terra::extract(raster_stack, vect(samples_valid)) %>%
@@ -75,20 +92,6 @@ valid_vals <- terra::extract(raster_stack, vect(samples_valid)) %>%
   rename(Class = ...506) %>% 
   drop_na()
 
-
-# backup path to file
-# save(valid_vals, file = "valid_samples.RData")
-# load( "backup/valid_samples.RData")
-
-# Train Random Forest model
-print('Train model.')
-rf_model <- randomForest(x = train_vals[, 1:504], y = as.factor(train_vals[, 505]), 
-                         ntree = 500, mtry = sqrt(504), importance = TRUE)
-
-############################ Apply model to unseen data ########################
-
-# backup path to model
-# load("CTM_model.RData")
 
 ## Validate model performance
 # Make predictions on validation set
@@ -113,9 +116,6 @@ users_accuracy <- diag(conf_matrix) / rowSums(conf_matrix)
 print("Classwise user's Accuracy:")
 print(round(users_accuracy * 100, 2))
 
-# Show variable importance
-importance(rf_model)
-varImpPlot(rf_model)
 
 
 ################## Apply model to raster stack and predict map #################

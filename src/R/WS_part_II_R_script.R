@@ -21,7 +21,7 @@ agri_mask <- rast("data/raster/corine_2018_albania_10m_agri_mask.tif")
 group_extent <- st_read("data/vector/group_.gpkg")
 
 # Load raster stack and crop to group extent
-raster_group <-   terra::rast("data/raster/WS_part_II_raster_stack.tif")# %>% terra::crop(vect(group_extent))
+raster_group <-   terra::rast("data/raster/WS_part_II_raster_stack.tif") %>% terra::crop(vect(group_extent))
 raster_group
 
 # Set names of raster layers to match feature names in training data

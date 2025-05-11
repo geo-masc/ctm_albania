@@ -31,6 +31,8 @@ Clone the repository to your local machine using RStudio:
 ```bash
 git@github.com:geo-masc/ctm_albania.git
 ```
+If not yet available please download and install R-Tools from: https://cran.r-project.org/bin/windows/Rtools/
+Please make sure to use the version that matches your R installation.
 
 Download the necessary data from: https://cloud.thuenen.de/index.php/s/XiQ2yzKzP77XsWR
 
@@ -59,6 +61,13 @@ Navigate to and open the main workshop script:
 ```
 /ctm_albania/src/R/WS_part_I_R_script.R
 ```
+
+and for the second part:
+
+```
+/ctm_albania/src/R/WS_part_II_R_script.R
+```
+
 
 ---
 
